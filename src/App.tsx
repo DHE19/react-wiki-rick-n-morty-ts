@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css'
 import Card from './components/Card';
+import Filter from './components/filter/Filter';
 import Pagination from './components/Pagination';
 import Search from './components/Search';
 import { IData } from './type';
@@ -12,11 +13,17 @@ function App() {
   const [fetchData, setFetchData] = useState<IData>({} as IData);
   const [search, setSearch] = useState<string>('');
   const [pageNumber, setPageNumber] = useState<number>(1);
+
+  const [status, setStatus] = useState('');
+  const [gender, setGender] = useState('');
+  const [species, setSpecies] = useState('');
   
-  const api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}`;
+  const api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}&status=${status}&gender=${gender}&species=${species}`;
  /* FETCH DATA && USE EFFECT */
  
  useEffect(() => {    
+  console.log('actualizando', api);
+  
    (async () =>{
      const data = await fetch(api).then(res => res.json());
      setFetchData(data);
@@ -32,16 +39,23 @@ function App() {
       <img src={RNMLogo} alt="rick and morty"
       className='mx-auto  w-60 md:w-80 my-4'
       />
+
       <Search setSearch={(setSearch)}
       updatePageNumber={setPageNumber}
       />
-      <div className="w-full bg-slate-300 py-4 mt-[-1.23rem]">
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-7 mx-2 md:mx-16 xl:mx-32">
+
+      <div className="w-full grid grid-cols-1 md:grid-cols-12 bg-slate-300 py-4 mt-[-1.23rem] px-5">
+          <Filter
+            updatePagenumber={setPageNumber}
+            updateStatus={setStatus}
+            updateGender={setGender}
+            updateSpecies={setSpecies}
+          />
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-7 mx-5 lg:mx-10 col-span-12 lg:col-span-9">
           { fetchData.results ? 
           (
             fetchData.results.map(({id,image,name,status,location}) => <Card 
             key={id}
-            id={id}
             status={status}
             image={image} 
             name={name}
@@ -50,6 +64,7 @@ function App() {
           )
           : <p>No hay datos</p>}
         </div>
+
       </div>
 
       <Pagination

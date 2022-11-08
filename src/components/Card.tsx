@@ -3,19 +3,17 @@
 
 
 interface Props{
-    id:number,
+
     image: string,
     name: string,
     status:string,
     location: {name:string},
 }
 
-const Card:React.FC<Props> = ({id,image,name,status,location}) => {
+const Card:React.FC<Props> = ({image,name,status,location}) => {
 
 
     const getTheRihtColor = ():string =>{
-            console.log(status);
-            
         switch(status){
             case 'Alive':
                 return 'bg-green-500';
