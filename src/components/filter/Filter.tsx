@@ -35,7 +35,7 @@ const Filter:React.FC<IProps> = ({updateGender,updatePagenumber,updateStatus,upd
                             <summary className="px-4 py-4 text-slate-700 font-semibold cursor-pointer ">
                                 Status
                             </summary>
-                            <div className="px-2 pb-4  grid grid-cols-3 lg:grid-cols-2 ">
+                            <div className="px-2 pb-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 ">
                             {status.map((it,i) =>(<FilterButton
                                 name={it}
                                 key={i}
@@ -53,7 +53,7 @@ const Filter:React.FC<IProps> = ({updateGender,updatePagenumber,updateStatus,upd
                             <summary className="px-4 py-4 text-slate-700 font-semibold cursor-pointer ">
                                 Specie
                             </summary>
-                            <div className="px-2  pb-6  grid grid-cols-4 lg:grid-cols-2 ">
+                            <div className="px-2  pb-6  grid grid-cols-2 md:grid-cols-4 lg:grid-cols-2 ">
                             {type.map((it,i) =>(<FilterButton
                                 name={it}
                                 key={i}
@@ -71,7 +71,7 @@ const Filter:React.FC<IProps> = ({updateGender,updatePagenumber,updateStatus,upd
                             <summary className="px-4 py-4 text-slate-700 font-semibold cursor-pointer ">
                                 Gender
                             </summary>
-                            <div className="px-2  pb-6  grid grid-cols-4 lg:grid-cols-2 ">
+                            <div className="px-2  pb-6  grid grid-cols-2 md:grid-cols-4 lg:grid-cols-2 ">
                             {gender.map((it,i) =>(<FilterButton
                                 name={it}
                                 key={i}

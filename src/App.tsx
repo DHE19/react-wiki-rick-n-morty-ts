@@ -51,7 +51,7 @@ function App() {
             updateGender={setGender}
             updateSpecies={setSpecies}
           />
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-7 mx-5 lg:mx-10 col-span-12 lg:col-span-9">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-7 md:mx-5 lg:mx-10 col-span-12 lg:col-span-9">
           { fetchData.results ? 
           (
             fetchData.results.map(({id,image,name,status,location}) => <Card 
