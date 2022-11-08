@@ -1,16 +1,19 @@
 import { useEffect, useState } from 'react';
 import './App.css'
 import Card from './components/Card';
+import Pagination from './components/Pagination';
+import Search from './components/Search';
 import { IData } from './type';
-
+const RNMLogo = "https://upload.wikimedia.org/wikipedia/commons/b/b1/Rick_and_Morty.svg"
 
 
 function App() {
   
-  const api = `https://rickandmortyapi.com/api/character/?page=2 `;
   const [fetchData, setFetchData] = useState<IData>({} as IData);
-
-
+  const [search, setSearch] = useState<string>('');
+  const [pageNumber, setPageNumber] = useState<number>(1);
+  
+  const api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}`;
  /* FETCH DATA && USE EFFECT */
  
  useEffect(() => {    
@@ -26,12 +29,14 @@ function App() {
 
   return (
     <div className="App w-full">
-      <h1 className="text-center mb-3">
-        Rick & Morty!
-      </h1>
-
-      <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-7">
+      <img src={RNMLogo} alt="rick and morty"
+      className='mx-auto  w-60 md:w-80 my-4'
+      />
+      <Search setSearch={(setSearch)}
+      updatePageNumber={setPageNumber}
+      />
+      <div className="w-full bg-slate-300 py-4 mt-[-1.23rem]">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-7 mx-2 md:mx-16 xl:mx-32">
           { fetchData.results ? 
           (
             fetchData.results.map(({id,image,name,status,location}) => <Card 
@@ -46,6 +51,12 @@ function App() {
           : <p>No hay datos</p>}
         </div>
       </div>
+
+      <Pagination
+        count={fetchData?.info?.pages}
+        pagenumber={pageNumber}
+        updatePageNumber={setPageNumber}
+      />
     </div>
   )
 }

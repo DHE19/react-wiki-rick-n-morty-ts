@@ -17,7 +17,7 @@ export  interface IData{
         count:number,
         next:string,
         pages:number,
-        prev: string | null,
+        prev:string | null,
     },
     results: [R_M_data];
 }
