@@ -16,9 +16,6 @@ const Navbar = () => {
                     <NavLink to='/episodes' className={''}>
                         Episodes
                     </NavLink>
-                    <NavLink to='/location' className={''}>
-                        Location
-                    </NavLink>
                 </div>
             </div>
         </nav>
