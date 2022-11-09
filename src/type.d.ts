@@ -12,7 +12,7 @@ export type R_M_data ={
     type:string,
     url:string,
 }
-export  interface IData{
+export  interface IDataCharacter{
     info: {
         count:number,
         next:string,
@@ -20,5 +20,12 @@ export  interface IData{
         prev:string | null,
     },
     results: [R_M_data];
-}
+}   
 
+
+export interface IDataEpisode {
+    name:string,
+    episode:string,
+    air_date:string,
+    characters:Array<string>,
+}
