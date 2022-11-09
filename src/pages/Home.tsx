@@ -49,7 +49,7 @@ const [fetchData, setFetchData] = useState<IData>({} as IData);
             updateSpecies={setSpecies}
           />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-7 md:mx-5 lg:mx-10 col-span-12 lg:col-span-9">
+        <div className="grid grid-cols-1 sm:grid-cols-3 xl:grid-cols-4 gap-7 md:mx-5 lg:mx-10 col-span-12 lg:col-span-9">
           { fetchData.results ? 
           (
             fetchData.results.map(({id,image,name,status,location}) => 
